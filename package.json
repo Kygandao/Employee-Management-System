@@ -1,5 +1,5 @@
 {
-  "name": "Employee-Management-System",
+  "name": "EmpTracker",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,22 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kygandao/Employee-Management-System.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Kygandao/Employee-Management-System/issues"
-  },
-  "homepage": "https://github.com/Kygandao/Employee-Management-System#readme",
   "dependencies": {
-    "console.table": "^0.10.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "inquirer": "^8.1.2",
     "mysql": "^2.18.1",
-    "save": "^2.4.0"
+    "mysql2": "^2.2.5"
   }
 }
