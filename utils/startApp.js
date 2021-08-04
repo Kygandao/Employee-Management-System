@@ -12,11 +12,6 @@ const db = mysql.createConnection(
     console.log('Connected to the Company Database.')
 );
 
-//require functions built in another file
-//const viewTables = require('./viewTables');
-//const addValue = require('./addValue');
-//const update = require('./update');
-
 function mainMenu () {
     return inquirer.prompt([
         {
