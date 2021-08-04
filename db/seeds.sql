@@ -9,10 +9,10 @@ VALUES ("Sales Associate", 14.00, 1),
        ("Customer Service Rep", 15.00, 3),
        ("Payroll", 30.00, 2);
 
-INSERT INTO employees (first_name, last_name, role_id, manager_id)
-VALUES ("Stacey", "Dyer", 3, 2),
-       ("Marci", "Akermann", 2, 2),
-       ("Foster", "Bryon", 1, 1),
-       ("Milo", "Hampton", 2, 1),
-       ("Marlowe", "Gibb", 3, 1),
-       ("Griselda", "Grenville", 1, 3);
+INSERT INTO employees (first_name, last_name, role_id, manager_id, department_id)
+VALUES ("Stacey", "Dyer", 3, 3, 1),
+       ("Marci", "Akermann", 2, 2, 2),
+       ("Foster", "Bryon", 1, 1, 3),
+       ("Milo", "Hampton", 6, 1, 2),
+       ("Marlowe", "Gibb", 5, 1, 3),
+       ("Griselda", "Grenville", 4, 3, 3);

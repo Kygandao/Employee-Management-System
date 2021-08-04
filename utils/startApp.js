@@ -64,21 +64,85 @@ function addDepartment() {
         {
             type: 'input',
             message: 'Please enter the name of the new Department',
-            name: 'newDepartmentName',
+            name: 'newDeptName',
         }
     ])
+
 };
 
 function addRole() {
-
+    return inquirer.prompt([
+        {
+            type: 'input',
+            message: 'Please enter the title of the new Role',
+            name: 'title',
+        },
+        {
+            type: 'input',
+            message: 'Please enter the hour salary(decimal form) of the new Role',
+            name: 'salary',
+        },
+        {
+            type: 'input',
+            message: "Please enter the new Role's Department ID",
+            name: 'roleDept',
+        },
+    ])
 };
 
 function addEmployee() {
-
+    return inquirer.prompt([
+        {
+            type: 'input',
+            message: 'Please enter the First Name of the new Employee',
+            name: 'firstName',
+        },
+        {
+            type: 'input',
+            message: 'Please enter the Last Name of the new Employee',
+            name: 'lastName',
+        },
+        {
+            type: 'input',
+            message: "Please enter the new Employee's Role ID",
+            name: 'roleID',
+        },
+        {
+            type: 'input',
+            message: "Please enter the new Employee's Manager's ID",
+            name: 'managerID',
+        },
+        {
+            type: 'input',
+            message: "Please enter the new Employee's Department ID",
+            name: 'empDeptID',
+        },
+    ])
 };
 
 function updateEmployee() {
-
+    return inquirer.prompt([
+        {
+            type: 'input',
+            message: 'Please enter the ID of the Epmloyee you wish to update',
+            name: 'updateStart',
+        },
+        {
+            type: 'input',
+            message: "Please enter the Employee's new Role ID",
+            name: 'updatedRole',
+        },
+        {
+            type: 'input',
+            message: "Please enter the Employeesn's new Manager ID",
+            name: 'updatedManagerID',
+        },
+        {
+            type: 'input',
+            message: "Please enter the Employee's new Department ID",
+            name: 'roleDept',
+        },
+    ])
 };
 
 async function startApp() {
@@ -90,21 +154,55 @@ async function startApp() {
         } else if (userChoice.mainMenuOptions === 'View All Employees') {
             viewEmployees();
         } else if (userChoice.mainMenuOptions === 'Add a Department') {
-            let newDepartment = await addDepartment();
-            db.query(`INSERT INTO departments (department_name) VALUES ('${newDepartment.newDepartmentName}')`, function (err, results) {
+            const newDepartment = await addDepartment();
+            db.query(`INSERT INTO departments (department_name) VALUES ('${newDepartment.newDeptName}')`, function (err, results) {
                 if (err) {
                     console.log(err);
                 }
-                console.table(results)
+                console.table(results);
             })
+            startApp();
         } else if (userChoice.mainMenuOptions === 'Add a Role') {
-            addRole();
+            const newRole = await addRole();
+            db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${newRole.title}', '${newRole.salary}', '${newRole.roleDept}')`, function (err, results) {
+                if (err) {
+                    console.log(err);
+                }
+                console.table(results);
+            })
+            startApp();
         } else if (userChoice.mainMenuOptions === 'Add an Employee') {
-            addEmployee();
+            const newEmployee = await addEmployee();
+            db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, department_id) VALUES ('${newEmployee.firstName}', '${newEmployee.lastName}', '${newEmployee.roleID}', '${newEmployee.managerID}', '${newEmployee.empDeptID}')`, function (err, results) {
+                if (err) {
+                    console.log(err);
+                }
+                console.table(results);
+            })
+            startApp();
         } else if (userChoice.mainMenuOptions === 'Update an Employee Role') {
-            updateEmployee();
+            const updatedEmployee = await updateEmployee();
+            db.query(`UPDATE employee SET role_id = '${updatedEmployee.updatedRole}' WHERE id = ?`, updatedEmployee.updateStart, function (err, results) {
+                if (err) {
+                    console.log(err);
+                }
+                console.log(results)
+            });
+            db.query(`UPDATE employee SET manager_id = '${updatedEmployee.updatedManagerID}' WHERE id = ?`, updatedEmployee.updatedManagerID, function (err, results) {
+                if (err) {
+                    console.log(err);
+                }
+                console.log(results)
+            });
+            db.query(`UPDATE employee SET department_id = '${updatedEmployee.roleDept}' WHERE id = ?`, updatedEmployee.roleDept, function (err, results) {
+                if (err) {
+                    console.log(err);
+                }
+                console.log(results)
+            });
         } else if (userChoice.mainMenuOptions === 'Exit') {
-            return console.log('Goodbye')
+            console.log('Goodbye')
+            return;
         }
     }
 
