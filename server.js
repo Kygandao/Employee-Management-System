@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 require('dotenv').config();
+const { mainMenu } = require('./utils/mainMenu');
 
 const PORT = process.env.PORT || 3007;
 const app = express();
@@ -18,3 +19,5 @@ const db = mysql.createConnection(
     console.log('Connected to the Company Database.')
 );
 
+//to envoke function in other file, 
+mainMenu();
