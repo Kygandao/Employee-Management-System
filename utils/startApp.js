@@ -140,7 +140,7 @@ const addDepartment = () => {
 };
 
 
-//TODO: fix add role, create employee, update employee
+//TODO: fix add role, write add employee, write update employee.
 
 const addRole = () => {
     inquirer.prompt([
