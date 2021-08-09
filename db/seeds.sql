@@ -1,18 +1,24 @@
-INSERT INTO departments (department_name)
-VALUES ("Sales"),
-       ("Human Resources"),
-       ("Customer Service");
+INSERT INTO department
+    (department_name)
+VALUES
+    ('Customer Service'),
+    ('Human Resources'),
+    ('Accounting');
 
-INSERT INTO roles (title, salary, department_id)
-VALUES ("Sales Associate", 14.00, 1),
-       ("Recruiting Officer", 25.00, 2),
-       ("Customer Service Rep", 15.00, 3),
-       ("Payroll", 30.00, 2);
+INSERT INTO role
+    (title, salary, department_id)
+VALUES
+    ('Resources Manager', 65000, 2),
+    ('Customer Service Rep', 45000, 1),
+    ('Accounts Receivable', 50000, 3),
+    ('Billing', 50000, 3);
 
-INSERT INTO employees (first_name, last_name, role_id, manager_id, department_id)
-VALUES ("Stacey", "Dyer", 3, 3, 1),
-       ("Marci", "Akermann", 2, 2, 2),
-       ("Foster", "Bryon", 1, 1, 3),
-       ("Milo", "Hampton", 6, 1, 2),
-       ("Marlowe", "Gibb", 5, 1, 3),
-       ("Griselda", "Grenville", 4, 3, 3);
+INSERT INTO employee
+    (first_name, last_name, role_id, manager_id)
+VALUES
+    ('Stacey', 'Dyer', 2, 1),
+    ('Marci', 'Akermann', 1, 2),
+    ('Foster', 'Bryon', 4, 2),
+    ('Milo', 'Hampton', 3, 2),
+    ('Marlowe', 'Gibb', 4, 1),
+    ('Griselda', 'Grenville', 4, 2);
