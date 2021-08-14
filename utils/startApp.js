@@ -142,6 +142,7 @@ const addDepartment = () => {
 
 //TODO: fix add role, write add employee, write update employee.
 
+
 const addRole = () => {
     inquirer.prompt([
         {
@@ -190,3 +191,5 @@ const addRole = () => {
 
 
 module.exports = { startApp }
+
+//TODO: write/fix update. update changes all values
