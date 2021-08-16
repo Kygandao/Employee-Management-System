@@ -178,7 +178,7 @@ const addRole = () => {
                 department_id: answer.deptID
             }
         );
-    }) .then(function (answer) {
+    }) .then(function () {
         db.query('SELECT * FROM role', (err, results) => {
             if (err) {
                 console.log(err);
